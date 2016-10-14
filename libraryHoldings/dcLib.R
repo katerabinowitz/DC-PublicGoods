@@ -75,7 +75,7 @@ ggplot(dcLibG, aes(x=year, y=value, fill=variable)) +
   theme(plot.title=element_text(family="Helvetica", size=15, face="bold")) +
   theme(plot.subtitle=element_text(color="#505050")) +
   theme(plot.caption=element_text(color="#808080")) +
-  labs(x="",y="Thousands", 
+  labs(x="",y="Millions", 
        title="Books Make Up Less of Today's DC Library Collection",
        subtitle="DCPL resources to borrow, by type",
        caption="\nSource: IMLS")
