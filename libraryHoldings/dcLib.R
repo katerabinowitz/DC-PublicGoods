@@ -45,8 +45,6 @@ colnames(dcLibSum)<-c("year","Books","e-Books","Audio","Video","Circulation","ki
 
 dcLibFin<-merge(dcLibSum,dcLibCh,by="year")
 
-dcLibSum$yr<-substr("20","",as.character(dcLibSum$year))
-
 #rough graph cuts
 dcLibG<-melt(dcLibSum,id.var="year")
 dcLibC<-filter(dcLibG,variable %in% c("Circulation","Library Visits"))
@@ -111,8 +109,7 @@ ggsave("/Users/katerabinowitz/Documents/DataLensDC/Website/DataLensDCsite/Images
 ggplot(dcLibC, aes(x=year, y=value, group=variable, colour=variable)) +
   geom_line() +
   scale_color_manual(values=c("#9BB899","#166678")) +
-  scale_y_continuous(expand=c(0,0), limit=c(0,4500000),labels = function(x)x/1000000,
-                     breaks=c(1000000,2000000,3000000,4000000)) +
+  scale_y_continuous(expand=c(0,0), limit=c(0,4500000),labels = function(x)x/1000000, breaks=c(1000000,2000000,3000000,4000000)) +
   theme(legend.position="none") +
   theme(axis.text.x = element_text(hjust=0.6)) +
   theme(axis.text.y = element_text(hjust=1)) +
@@ -127,7 +124,7 @@ ggplot(dcLibC, aes(x=year, y=value, group=variable, colour=variable)) +
   annotate("text", x = 2011, y = 2500000, label = "Library visits", color="#166678") +
   annotate("text", x = 2012, y = 3450000, label = "Circulation",color="#9BB899") +
   labs(x="",y="Millions", 
-       title="Circulation and Library Visit More Than Double in 8 Years",
+       title="Circulation and Library Visits Double in 8 Years",
        subtitle="Annual Circulation and Library Visits",
        caption="\nSource: IMLS")
 ggsave("/Users/katerabinowitz/Documents/DataLensDC/Website/DataLensDCsite/Images/DCPLvisits.png",width=6, height=5,dpi=100)
